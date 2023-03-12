@@ -36,9 +36,7 @@ const readMessages = ()=>{
     const banner = document.querySelector('div.date_message');
     const datesMessage = readAllDates();
     const filterData = datesMessage.filter(item => item.message==1)
-
     for(let i = 0 ; i<filterData.length; i++){
-
                 const div = document.createElement('div');
                 const button_close = document.createElement('div');
                 const title_date = document.createElement('div');
