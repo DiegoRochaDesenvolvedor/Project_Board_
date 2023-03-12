@@ -24,6 +24,7 @@ const inputInsertKey = (input)=>{
 const botao = ()=>{
     window.location.href = "index.html"
 };
+
 button_add.onclick = inputInsert; //add input data
 button_back.onclick = botao;
 document.addEventListener('keydown',(e)=>{
