@@ -1,4 +1,4 @@
-const functions = require('./controller/mainIndex.js')
+const functions = require('./controller/principal.js')
 const button_add = document.querySelector('button.add_button');
 const input = document.querySelector('input.text_add');
 const input_date = document.querySelector('.input_date')
