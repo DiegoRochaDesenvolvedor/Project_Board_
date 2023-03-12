@@ -11,7 +11,7 @@ class DataManipulate{
     }
     form (){
         const form =[{
-            "id":0,
+            "id":1,
             "table":this.table,
             "text":this.text,
             "completed":this.completed,

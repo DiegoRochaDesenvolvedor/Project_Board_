@@ -134,8 +134,8 @@ const setTable = (i) =>{
 
     const tableArray = [];
     tableArray.push(tableRead);
-
-    fs.writeFile(`./resources/app/config/Data_config.json`,JSON.stringify(tableArray) ,(err)=>{
+//resources/app
+    fs.writeFile(`./config/Data_config.json`,JSON.stringify(tableArray) ,(err)=>{
         if(err){
             console.log(err);
         }else{
@@ -145,8 +145,9 @@ const setTable = (i) =>{
 
     window.location.href="project.html";
 }
+//./resources/app
 const delete_table = (tableName) =>{
-    const path = `./resources/app/db/${tableName}.json`;
+    const path = `./db/${tableName}.json`;
     fs.unlinkSync(path);
     document.location.reload(true);
 };

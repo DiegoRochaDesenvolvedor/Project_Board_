@@ -2,7 +2,8 @@ const fs = require('fs');
 
 const writeData = (data,table)=>{
     const dataConverted = JSON.stringify(data,null,'\t');
-    fs.writeFile(`./resources/app/db/${table}.json`,dataConverted ,(err)=>{
+    ///resources/app/
+    fs.writeFile(`./db/${table}.json`,dataConverted ,(err)=>{
         if(err){
             console.log(err);
         }else{
@@ -22,8 +23,8 @@ const addData = (data,table)=>{
         const dataFilter = data.shift();
         dataFilter.id = readTable.length+1
         readTable.push(dataFilter) 
-    }
-        fs.writeFile(`./resources/app/db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
+    }///resources/app
+        fs.writeFile(`./db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
             if(err){
                 console.log(err);
             }else{
@@ -33,7 +34,8 @@ const addData = (data,table)=>{
     reloadWindow();
 }
 const readData = (table)=>{
-    const read = fs.readFileSync(`./resources/app/db/${table}.json`,'utf-8');
+    ///resources/app
+    const read = fs.readFileSync(`./db/${table}.json`,'utf-8');
     return JSON.parse(read);
 }
 const reloadWindow = ()=>{
@@ -50,7 +52,8 @@ const deleteData = (id,tableName)=>{
     reloadWindow();
 }
 const readTables = ()=>{
-   const data = fs.readdirSync('./resources/app/db',(err,data)=>{
+    ////resources/app
+   const data = fs.readdirSync('./db',(err,data)=>{
         if(err){
             return err;
         }

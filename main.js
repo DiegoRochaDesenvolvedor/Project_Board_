@@ -11,7 +11,7 @@ app.on('ready',()=>{
     
     // let mainMenu = Menu.buildFromTemplate([])
     //Menu.setApplicationMenu(null);// para tirar o menu superior
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
     mainWindow.loadURL(`file://${__dirname}/view/index.html`); // o dirname pega o caminho da pasta ate o html para abrir na janela
 
 });// quando o app estiver ready ele rodara a função
