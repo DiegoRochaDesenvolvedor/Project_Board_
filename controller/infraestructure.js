@@ -1,4 +1,4 @@
-const Structure = require('../model/Structure.js');
+const Structure = require('../model/Data.js');
 
 class infraestructure{
         constructor(data,table,title){

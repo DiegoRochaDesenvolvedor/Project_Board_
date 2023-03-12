@@ -1,6 +1,6 @@
-const readTable = require('../model/Structure.js');
+const readTable = require('../model/Data.js');
 const infraestructure = require('../controller/infraestructure.js')
-const Structure = require('../model/Structure.js');
+const Structure = require('../model/Data.js');
 const DataManipulate = require('../controller/DataManipulate.js')
 const fs = require('fs')
 

@@ -1,4 +1,4 @@
-const infra = require('../model/Structure.js');
+const infra = require('../model/Data.js');
 
 class DataManipulate{
     constructor(text,completed,state,table,date,message){
