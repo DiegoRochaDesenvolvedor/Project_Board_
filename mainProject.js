@@ -33,6 +33,7 @@ document.addEventListener('keydown',(e)=>{
         inputInsertKey(input);
     }
 });
+
 functions.readTable(table()[0].tableRead);//read list todo
 functions.loopButton(table()[0].tableRead);//add ok buttons function action
 functions.loopButtonBack(table()[0].tableRead);//add back buttons function action
