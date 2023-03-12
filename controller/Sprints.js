@@ -1,4 +1,4 @@
-const infraestructure = require('./infraestructure.js');
+const infraestructure = require('../controller/infraestructure.js');
 const DataManipulate = require('./DataManipulate.js');
 const Structure = require('../model/Structure.js');
 
