@@ -32,7 +32,6 @@ const readTables = () =>{
             
         }
 }
-
 const readMessages = ()=>{
     const banner = document.querySelector('div.date_message');
     const datesMessage = readAllDates();
