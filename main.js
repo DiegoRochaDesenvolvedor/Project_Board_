@@ -10,9 +10,9 @@ app.on('ready',()=>{
     });//com o browserWindow é possivel criar a janela.
     
     // let mainMenu = Menu.buildFromTemplate([])
-    Menu.setApplicationMenu(null);// para tirar o menu superior
+    //Menu.setApplicationMenu(null);// para tirar o menu superior
     //mainWindow.webContents.openDevTools()
-    mainWindow.loadURL(`file://${__dirname}/view/indexLogin.html`); // o dirname pega o caminho da pasta ate o html para abrir na janela
+    mainWindow.loadURL(`file://${__dirname}/view/index.html`); // o dirname pega o caminho da pasta ate o html para abrir na janela
 
 });// quando o app estiver ready ele rodara a função
 app.on('window-all-closed',()=>{
