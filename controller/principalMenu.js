@@ -11,7 +11,6 @@ const readTables = () =>{
     const table = document.querySelector('table.projects_table');
     const read = readTable.readTables()
     const filter = read.map(item=>item.replace('.json',''));
-
     for(let i = 0 ; i<read.length ; i++){
             const tr = document.createElement('tr');
             const td = document.createElement('td');
