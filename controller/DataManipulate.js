@@ -21,6 +21,7 @@ class DataManipulate{
         }]
         return form
     }
+    
     writeData(){
         infra.addData(this.form(),this.table);
     }
