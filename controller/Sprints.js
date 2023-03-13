@@ -118,7 +118,6 @@ const loopButtonDelete = (tableName) =>{
         };//taking position butoon in array
     }
 };
-
 module.exports = {
     readTable,
     insertInput,
