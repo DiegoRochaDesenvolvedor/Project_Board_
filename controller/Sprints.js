@@ -1,5 +1,5 @@
 const infraestructure = require('../controller/infraestructure.js');
-const DataManipulate = require('./DataManipulate.js');
+const DataManipulate = require('../controller/DataManipulate.js');
 const Structure = require('../model/Data.js');
 
 const readTable = (tableRead) =>{
