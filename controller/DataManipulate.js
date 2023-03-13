@@ -51,4 +51,5 @@ class DataManipulate{
     deleteData(id){
     }
 }
+
 module.exports = DataManipulate;
