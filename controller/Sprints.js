@@ -77,6 +77,7 @@ const loopButton = (tableName)=>{
         };//taking position butoon in array
     }
 };
+
 const loopButtonBack = (tableName)=>{
     const back_button = document.querySelectorAll('.back_button');
     
