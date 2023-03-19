@@ -13,7 +13,6 @@ const writeData = (data,table)=>{
 }
 const addData = (data,table)=>{
 
-    
     let readTable = readData (table);
 
     if(readTable == null){
@@ -21,6 +20,7 @@ const addData = (data,table)=>{
         readTable.id = 1
     }else{
         const dataFilter = data.shift();
+        console.log(dataFilter)
         dataFilter.id = readTable.length+1
         readTable.push(dataFilter) 
     }///resources/app
@@ -31,7 +31,7 @@ const addData = (data,table)=>{
                 console.log('Dados cadastrados')
             }
         });
-    reloadWindow();
+    //reloadWindow();
 }
 const readData = (table)=>{
     ///resources/app

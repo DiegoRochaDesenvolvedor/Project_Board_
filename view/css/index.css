@@ -51,30 +51,36 @@ body{
     justify-content: center;
 }
 .toDo{
-    background-color: var(--main-modal-color);
-
-    width: auto;
-    height: auto;
+    /* background-color: var(--main-modal-color); */
+    width: 100%;
+    height: 100vh;
     border-radius: 10px;
 }
 .completed{
     background-color: var(--main-modal-color);
-    width: 50%;
-    height: 100%;
+    width: 44%;
+    height: 100vh;
     border-radius: 10px;
 }
 .right{
     background-color: var(--main-modal-color);
 }
 .input_date{
-    width: 17vw;
+    width: 11vw;
     height:4vh;
     font-size: 13px;
-    
+    padding-right:4px;
+}
+.text_sprint{
+    width: 11vw;
+    height:4vh;
+    font-size: 13px; 
+    margin-left:4px;  
 }
 .date{
     color: rgb(217, 255, 0);
     font-size: 11px;
+    
 }
 
 .list{
@@ -84,10 +90,16 @@ body{
     padding: 5%;
 }
 .input_list{
-    width: 50%;
-    height: 99%;
+    width: 80%;
+    height: 7vh;
+    background-color: var(--main-modal-color);
     border-radius: 10px;
-    padding-right: 10px;
+    margin-left:88px;
+    margin-top:20px;
+    padding-top:10px;
+    padding-left:10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--main-titles-color);
 }
 .input_list_line{
     width: auto;
@@ -227,11 +239,74 @@ body{
 }
 .view_input_list{
     background-color: var(--main-modal-color);
-    width: auto;
-    height: 75vh;
+    width: 44%;
+    height: 100vh;
     border-radius: 10px;
     margin-right: 1%;
 }
+.sprint_yellow{
+    background-color: rgb(255, 244, 44);
+    height: 20px;
+    width: auto;
+    color:rgb(34, 34, 34);
+    margin:0;
+    padding: 0px;
+}
+.sprint_green{
+    background-color: rgb(68, 255, 0);
+    height: 20px;
+    width: auto;
+    color:rgb(34, 34, 34);
+    margin:0;
+    padding: 0px;
+}
+.sprint_red{
+    background-color: rgb(255, 44, 44);
+    height: 20px;
+    width: auto;
+    color:rgb(34, 34, 34);
+    margin:0;
+    padding: 0px;
+}
+.sprint_blue{
+    background-color: rgb(44, 48, 255);
+    height: 20px;
+    width: auto;
+    color:rgb(34, 34, 34);
+    margin:0;
+    padding: 0px;
+}
+.sprint_texto{
+    margin:10px;
+}
+.selectMenu{
+    background-color: rgb(105, 105, 105);
+    height: auto;
+    width: auto;
+}
+/* Select colors */
+.option_green{
+    background-color: rgb(68, 255, 0);
+    border-radius: 4px;
+
+}
+.option_yellow{
+    background-color: rgb(255, 244, 44);
+    border-radius: 4px;
+}
+.option_red{
+    background-color: rgb(255, 44, 44);
+    border-radius: 4px;
+}
+.option_blue{
+    background-color: rgb(44, 48, 255);
+    border-radius: 4px;
+}
+.option_grey{
+    background-color: rgb(98, 98, 98);
+    border-radius: 4px;
+}
+
 h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
@@ -249,7 +324,11 @@ td{
     color:var(--main-words-color);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
 }
+
 input{
     width: 20vw;
     height: 4vh;

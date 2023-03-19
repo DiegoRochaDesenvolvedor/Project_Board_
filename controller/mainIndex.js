@@ -1,13 +1,14 @@
+const fs = require('fs');
 const functions = require('../controller/Sprints.js')
 const button_add = document.querySelector('button.add_button');
 const input = document.querySelector('input.text_add');
-const input_date = document.querySelector('.input_date')
+const input_date = document.querySelector('.input_date');
+const input_sprint = document.querySelector('input.text_sprint');
+const input_color = document.querySelector('.sprint_menu_color');
 const button_back = document.querySelector('.back');
-const fs = require('fs');
 
 const title = () =>{
     const title = document.querySelector('.titleTag');
-
     title.innerHTML = table()[0].tableRead;
 };
 const table = ()=>{
@@ -16,10 +17,10 @@ const table = ()=>{
     return JSON.parse(read);
 }; 
 const inputInsert = ()=>{
-    functions.insertInput(input.value,table()[0].tableRead,input_date.value);
+    functions.insertInput(input.value,table()[0].tableRead,input_date.value,input_sprint.value,input_color.value);
 };
 const inputInsertKey = (input)=>{
-    functions.insertInput(input.value,table()[0].tableRead,input_date.value);
+    functions.insertInput(input.value,table()[0].tableRead,input_date.value,input_sprint.value,input_color.value);
 };
 const botao = ()=>{
     window.location.href = "index.html"

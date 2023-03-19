@@ -1,13 +1,15 @@
 const infra = require('../model/Data.js');
 
 class DataManipulate{
-    constructor(text,completed,state,table,date,message){
+    constructor(text,completed,state,table,date,message,input_sprint,sprint_menu_color){
         this.text = text,
         this.completed = completed,
         this.state = state,
         this.table = table,
         this.date = date || null
         this.message = message;
+        this.input_sprint = input_sprint || '';
+        this.sprint_menu_color =  sprint_menu_color || 'Grey';
     }
     form (){
         const form =[{
@@ -17,11 +19,12 @@ class DataManipulate{
             "completed":this.completed,
             "expirationDate": this.date,
             "status":this.state,
-            "message":1
+            "message":1,
+            "sprint_text":this.sprint_text,
+            "sprint_color":this.sprint_color
         }]
         return form
     }
-    
     writeData(){
         infra.addData(this.form(),this.table);
     }
@@ -42,7 +45,6 @@ class DataManipulate{
         };
         if(message != null){
             item.message = message
-            console.log( item.message)
         }     
  
         tableData.splice(id_data,1,item);
