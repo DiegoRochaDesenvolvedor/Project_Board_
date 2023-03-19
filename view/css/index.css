@@ -245,36 +245,40 @@ body{
     margin-right: 1%;
 }
 .sprint_yellow{
-    background-color: rgb(255, 244, 44);
-    height: 20px;
-    width: auto;
+    background-color: rgb(255, 251, 169);
+    max-height: 20px;
+    max-width: auto;
     color:rgb(34, 34, 34);
     margin:0;
     padding: 0px;
+    border-radius: 4px;
 }
 .sprint_green{
-    background-color: rgb(68, 255, 0);
+    background-color: rgb(189, 255, 165);
     height: 20px;
-    width: auto;
+    width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
     padding: 0px;
+    border-radius: 4px;
 }
 .sprint_red{
-    background-color: rgb(255, 44, 44);
+    background-color: rgb(255, 109, 109);
     height: 20px;
-    width: auto;
+    width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
     padding: 0px;
+    border-radius: 4px;
 }
 .sprint_blue{
-    background-color: rgb(44, 48, 255);
+    background-color: rgb(144, 181, 255);
     height: 20px;
-    width: auto;
+    width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
     padding: 0px;
+    border-radius: 4px;
 }
 .sprint_texto{
     margin:10px;
@@ -286,24 +290,24 @@ body{
 }
 /* Select colors */
 .option_green{
-    background-color: rgb(68, 255, 0);
+    background-color: rgb(189, 255, 165);
     border-radius: 4px;
 
 }
 .option_yellow{
-    background-color: rgb(255, 244, 44);
+    background-color: rgb(255, 251, 169);
     border-radius: 4px;
 }
 .option_red{
-    background-color: rgb(255, 44, 44);
+    background-color: rgb(255, 109, 109);
     border-radius: 4px;
 }
 .option_blue{
-    background-color: rgb(44, 48, 255);
+    background-color: rgb(144, 181, 255);
     border-radius: 4px;
 }
 .option_grey{
-    background-color: rgb(98, 98, 98);
+    background-color: rgb(157, 157, 157);
     border-radius: 4px;
 }
 

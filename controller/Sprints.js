@@ -65,12 +65,11 @@ const readTable = (tableRead) =>{
         
 };
 const insertInput = (data,table,date,sprint,sprint_color) =>{
-    const inputData = new DataManipulate(data,0,'todo',table,date,sprint,sprint_color);
+    const inputData = new DataManipulate(data,0,'todo',table,date,1,sprint,sprint_color);
     inputData.writeData();
 };
 const loopButton = (tableName)=>{
     const button_ok = document.querySelectorAll('.ok_button');
-    
     for(let i = 0;i<button_ok.length;i++){
         button_ok[i].onclick = function(){
             setCompleted(this.id,tableName);

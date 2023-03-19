@@ -20,8 +20,8 @@ class DataManipulate{
             "expirationDate": this.date,
             "status":this.state,
             "message":1,
-            "sprint_text":this.sprint_text,
-            "sprint_color":this.sprint_color
+            "sprint_text":this.input_sprint,
+            "sprint_color":this.sprint_menu_color
         }]
         return form
     }

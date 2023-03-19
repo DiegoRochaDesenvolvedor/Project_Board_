@@ -7,59 +7,5 @@
 		"expirationDate": "2023-03-19",
 		"status": "todo",
 		"message": 1
-	},
-	{
-		"id": 2,
-		"table": "New sprint",
-		"text": "",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
-	},
-	{
-		"id": 3,
-		"table": "New sprint",
-		"text": "fgh",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
-	},
-	{
-		"id": 4,
-		"table": "New sprint",
-		"text": "asd",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
-	},
-	{
-		"id": 5,
-		"table": "New sprint",
-		"text": "sdfsdf",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
-	},
-	{
-		"id": 6,
-		"table": "New sprint",
-		"text": "asd",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
-	},
-	{
-		"id": 7,
-		"table": "New sprint",
-		"text": "sdf",
-		"completed": 0,
-		"expirationDate": null,
-		"status": "todo",
-		"message": 1
 	}
 ]
