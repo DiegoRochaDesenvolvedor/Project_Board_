@@ -316,7 +316,60 @@ body{
     background-color: rgb(157, 157, 157);
     border-radius: 4px;
 }
-
+.titleProject_dashboard{
+    color: rgb(145, 145, 145);
+}
+.toDo_dashboard{
+    background-color: var(--main-modal-color);
+    border: 1px solid rgb(68, 67, 85);
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    align-content: center;
+    border-radius:4px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    
+}
+.todo_number{
+    color: rgb(225, 255, 0);
+    font-size: 20px;
+}
+.numbers_project{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--main-modal-color);
+    
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+}
+.sprints_dashboard{
+    background-color: var(--main-modal-color);
+    ;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.text_sprint{
+    color: rgb(129, 129, 129);
+}
+.sprint_due{
+    color:rgb(217, 255, 0);
+}
+.sprint_lines{
+    padding: 50px;
+}
+.sprint_line_background{
+    background-color: yellow;
+}
+.sprint_text_line{
+    color: rgb(8, 233, 64);
+    font-weight: 700;
+}
 h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;

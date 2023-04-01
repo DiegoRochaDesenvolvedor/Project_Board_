@@ -15,6 +15,7 @@ module.exports = class DataUser{
                 "profile": this.profile,
                 "group": this.group
         }]
+        
         return form 
     }
     createUser(){
