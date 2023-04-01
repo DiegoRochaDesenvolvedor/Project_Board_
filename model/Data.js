@@ -31,7 +31,7 @@ const addData = (data,table)=>{
                 console.log('Dados cadastrados')
             }
         });
-    //reloadWindow();
+    reloadWindow();
 }
 const readData = (table)=>{
     ///resources/app

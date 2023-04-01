@@ -45,11 +45,12 @@ const readMessages = ()=>{
                 const button_close = document.createElement('div');
                 const title_date = document.createElement('div');
                 const dateDate = document.createElement('div');
-                
+                 
                 button_close.innerHTML = 'X';
                 button_close.id = filterData[i].id;
                 title_date.innerHTML = `Sprint: ${filterData[i].text}`;
                 dateDate.innerHTML = `Due in: ${filterData[i].expirationDate}`;
+                tag.innerHTML = filterData[i].sprint_text
     
                 div.classList = 'date_message_banner';
                 button_close.classList = 'button_close';

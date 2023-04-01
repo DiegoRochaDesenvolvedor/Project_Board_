@@ -1,0 +1,42 @@
+[
+	{
+		"id": 0,
+		"user": "Fulano",
+		"password": "pass",
+		"token": "toipwueyrg15875678",
+		"profile": 1,
+		"group": "desenvolvedor"
+	},
+	{
+		"id": 1,
+		"user": "Fulano",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "group1"
+	},
+	{
+		"id": 2,
+		"user": "Fulano",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "group1"
+	},
+	{
+		"id": 3,
+		"user": "Fulano2",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3"
+	},
+	{
+		"id": 4,
+		"user": "Fulano2",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3"
+	}
+]

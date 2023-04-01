@@ -246,47 +246,53 @@ body{
 }
 .sprint_yellow{
     background-color: rgb(255, 251, 169);
-    max-height: 20px;
-    max-width: auto;
+    max-height: min-content;
+    max-width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
-    padding: 0px;
+    padding: 2px;
     border-radius: 4px;
+    font-size:11px;
 }
 .sprint_green{
     background-color: rgb(189, 255, 165);
-    height: 20px;
+    height: min-content;
     width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
-    padding: 0px;
+    padding: 2px;
     border-radius: 4px;
+    font-size:11px;
 }
 .sprint_red{
     background-color: rgb(255, 109, 109);
-    height: 20px;
+    height: min-content;
     width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
-    padding: 0px;
+    padding: 2px;
     border-radius: 4px;
+    font-size:11px;
 }
 .sprint_blue{
     background-color: rgb(144, 181, 255);
-    height: 20px;
+    height: min-content;
     width: min-content;
     color:rgb(34, 34, 34);
     margin:0;
-    padding: 0px;
+    padding: 2px;
     border-radius: 4px;
+    font-size:11px;
 }
 .sprint_texto{
     margin:10px;
+    padding-top:7px;
 }
 .selectMenu{
     background-color: rgb(105, 105, 105);
     height: auto;
     width: auto;
+    font-size:11px;
 }
 /* Select colors */
 .option_green{
@@ -321,7 +327,7 @@ h1{
 }
 td{ 
     width: 100vw;
-    height: auto;
+    height: min-content;
     padding: 7px;
     background-color: var(--main-modal-color);
     border: 1px solid rgb(54, 54, 54) ;
