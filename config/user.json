@@ -38,5 +38,38 @@
 		"token": null,
 		"profile": 1,
 		"group": "Grupo 3"
+	},
+	{
+		"id": 5,
+		"user": "Fulano2",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3"
+	},
+	{
+		"id": 6,
+		"user": "NEWNEW",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3"
+	},
+	{
+		"id": 7,
+		"user": "NEWNEW",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3"
+	},
+	{
+		"id": 8,
+		"user": "NEWNEW",
+		"password": "pass",
+		"token": null,
+		"profile": 1,
+		"group": "Grupo 3",
+		"organization": "progprog1"
 	}
 ]

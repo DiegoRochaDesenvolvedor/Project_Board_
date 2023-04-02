@@ -81,8 +81,8 @@ const readTable = (tableRead) =>{
         }
         
 };
-const insertInput = (data,table,date,sprint,sprint_color) =>{
-    const inputData = new DataManipulate(data,0,'todo',table,date,1,sprint,sprint_color);
+const insertInput = (data,table,date,sprint,sprint_color,organization) =>{
+    const inputData = new DataManipulate(data,0,'todo',table,date,1,sprint,sprint_color,organization);
     inputData.writeData();
 };
 const loopButton = (tableName)=>{

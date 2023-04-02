@@ -1,15 +1,16 @@
 const infra = require('../model/Data.js');
 
 class DataManipulate{
-    constructor(text,completed,state,table,date,message,input_sprint,sprint_menu_color){
+    constructor(text,completed,state,table,date,message,input_sprint,sprint_menu_color,organization){
         this.text = text,
         this.completed = completed,
         this.state = state,
         this.table = table,
-        this.date = date || null
-        this.message = message;
-        this.input_sprint = input_sprint || '';
-        this.sprint_menu_color =  sprint_menu_color || 'Grey';
+        this.date = date || null,
+        this.message = message,
+        this.input_sprint = input_sprint || '',
+        this.sprint_menu_color =  sprint_menu_color || 'Grey',
+        this.organization = organization
     }
     form (){
         const form =[{
@@ -21,7 +22,8 @@ class DataManipulate{
             "status":this.state,
             "message":1,
             "sprint_text":this.input_sprint,
-            "sprint_color":this.sprint_menu_color
+            "sprint_color":this.sprint_menu_color,
+            "organization":this.organization
         }]
         return form
     }

@@ -1,11 +1,12 @@
 const DataUser = require('../model/DataUser.js');
 
 class User {
-    constructor(user,password,group,profile){
+    constructor(user,password,group,profile,organization){
         this.user = user,
         this.password = password,
         this.group = group,
-        this.profile = profile
+        this.profile = profile,
+        this.organization = organization
     }
     setUserProfile(staff){
         const profile = null;
@@ -17,7 +18,7 @@ class User {
         return profile
     }
     addUser(){
-        const data = new DataUser(this.user,this.password,this.group,this.profile);
+        const data = new DataUser(this.user,this.password,this.group,this.profile,this.organization);
         data.editData(); 
     }
     createToken(){
@@ -31,8 +32,8 @@ class User {
     validateSession(){} 
 }
 
-const data = new User("Fulano2","pass","Grupo 3",1);
-data.createToken();
+const data = new User("NEWNEW","pass","Grupo 3",1,"progprog1");
+data.addUser();
 
 // const token = Math.floor(Math.random() * (7000 - 1000)+1000);
 // console.log(token);

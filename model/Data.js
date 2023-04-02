@@ -35,8 +35,12 @@ const addData = (data,table)=>{
 }
 const readData = (table)=>{
     ///resources/app
-    const read = fs.readFileSync(`./db/${table}.json`,'utf-8');
+    const read = fs.readFileSync(`../db/${table}.json`,'utf-8');
     return JSON.parse(read);
+}
+const readEntityConfig = ()=>{
+    const read = fs.readFileSync(`../config/Data_user_config.json`,'utf-8');
+    return JSON.parse(read);   
 }
 const reloadWindow = ()=>{
     document.location.reload(true);
@@ -53,7 +57,7 @@ const deleteData = (id,tableName)=>{
 }
 const readTables = ()=>{
     ////resources/app
-   const data = fs.readdirSync('./db',(err,data)=>{
+   const data = fs.readdirSync('../db',(err,data)=>{
         if(err){
             return err;
         }
@@ -70,5 +74,6 @@ module.exports = {
     addData,
     deleteData,
     readTables,
-    filterData
+    filterData,
+    readEntityConfig
 }

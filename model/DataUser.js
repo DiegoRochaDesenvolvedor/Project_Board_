@@ -1,10 +1,11 @@
 const fs = require('fs');
 module.exports = class DataUser{
-    constructor(user,password,group,profile){
+    constructor(user,password,group,profile,organization){
         this.user = user ;
         this.password = password;
         this.group = group;
         this.profile = profile;
+        this.organization = organization;
     };
     form (){
         const form = [{
@@ -13,7 +14,8 @@ module.exports = class DataUser{
                 "password":this.password,
                 "token":null,
                 "profile": this.profile,
-                "group": this.group
+                "group": this.group,
+                "organization":this.organization
         }]
         
         return form 
