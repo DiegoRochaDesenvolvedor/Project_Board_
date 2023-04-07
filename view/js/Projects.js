@@ -85,13 +85,14 @@ const readMessages = ()=>{
 //             document.location.reload(true);
 //         }       
 // };
-// //ok------- /tablesRead
+// //------- /tablesRead
 const readAllDates = () =>{
-    fetch('http://localhost:3000/tablesRead')
+    fetch('http://localhost:3000/tablesRead',{})
     .then(res => res.json())
     .then((res)=>{
     console.log(res)})
 }
+
    //////// const table_titles = Structure.readTables();
     // const tables = table_titles.map(data => data.replace('.json',''))
     // const dates = [];
