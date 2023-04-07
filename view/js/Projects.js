@@ -1,11 +1,12 @@
-// const readTable = require('../model/Data.js');
+// const readTable = require('../../model/Data.js');
 // const infraestructure = require('../controller/infraestructure.js')
-// const Structure = require('../model/Data.js');
+// const Structure = require('../../api/model/Data.js');
 // const DataManipulate = require('../controller/DataManipulate.js')
-// //const fs = require('fs')
+//const fs = require('fs')
 
 // const button_add = document.querySelector('.button_add');
 // const input_text = document.querySelector('.input_text');
+
 
 
 //ok ----- /tablesRead
@@ -86,20 +87,67 @@ const readMessages = ()=>{
 //         }       
 // };
 // //------- /tablesRead
-const readAllDates = () =>{
-    let data = "asd copy"
-    fetch('http://localhost:3000/tableReadData',{
-        method:"POST",
-        body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then((res)=>{console.log(res)})
-    .catch(err=> console.log(err))
+const readData = (table)=>{
+    const read = fs.readFileSync(`../../api/db/${table}.json`,'utf-8');
+    return JSON.parse(read);
 }
 
-   //////// const table_titles = Structure.readTables();
-    // const tables = table_titles.map(data => data.replace('.json',''))
-    // const dates = [];
+const readAllDates = () =>{
+    let data = { "table" : "asd copy"}
+    //     method:"POST",
+    //     body: JSON.stringify(data),
+    //     headers:{
+    //         "Content-type":"application/json; charset=UTF-8"
+    //     }
+    // })/////////////////////POST
+    fetch('http://localhost:3000/tablesRead')
+    .then(res => res.json())
+    .then((res)=>{
+        const table_titles = res
+        const tables = table_titles.map(data => data.replace('.json',''))
+        const dates = [];
+        const date = new Date();
+        const dayAdjusted = ('0'+ (date.getDate()+4)).slice(-2);
+        const mounth = ('0'+ date.getMonth()+1).slice(-2);
+        const year = date.getFullYear();
+        const dateCorrect = `${year}-${mounth}-${dayAdjusted}`;
+        
+            for(let i = 0; i<tables.length;i++){
+                const data = readData(tables[i]);
+                if(data == 0 || data == null){    
+                }else{
+                   for(let i = 0; i<data.length; i++){
+                        if(data[i].expirationDate == dateCorrect){
+                            dates.push(data[i]);
+                        }
+                    }
+                }
+        };
+        return dates
+        console.log(res)
+    })
+    .catch(err=> console.log(err))
+       
+}
+    //ok------ /tablesRead
+    //////// const table_titles = Structure.readTables();
+    
+//     const delete_button = (table)=>{
+//         //const read = readTable.readTables()
+//         const filter = read.map(item=>item.replace('.json',''));
+    
+//         const table_delete = document.querySelectorAll('.button_delete');
+    
+//         for(let i = 0; i<table_delete.length;i++){
+//             table_delete[i].onclick = function (){
+//                 delete_table(filter[i]);
+//             }
+//         };
+//     }
+
+//     // const table_titles = Structure.readTables();
+//     const tables = table_titles.map(data => data.replace('.json',''))
+//     const dates = [];
     
 //     const date = new Date();
 //     const dayAdjusted = ('0'+ (date.getDate()+4)).slice(-2);
@@ -122,12 +170,12 @@ const readAllDates = () =>{
 //     };
 //     return dates
 // }
-// //ok------ /tablesRead
-// const delete_button = (table)=>{
-//     //const read = readTable.readTables()
-//     const filter = read.map(item=>item.replace('.json',''));
+// // //ok------ /tablesRead
+// // const delete_button = (table)=>{
+// //     //const read = readTable.readTables()
+// //     const filter = read.map(item=>item.replace('.json',''));
 
-//     const table_delete = document.querySelectorAll('.button_delete');
+// //     const table_delete = document.querySelectorAll('.button_delete');
 
 //     for(let i = 0; i<table_delete.length;i++){
 //         table_delete[i].onclick = function (){

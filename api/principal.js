@@ -8,11 +8,11 @@ app.use(express.json());
 //////////////Projects
 //Ok
 app.use((req,res,next)=>{
-    res.setHeader("Access-Control-Allow-Origin","*")
-    res.header(
-        "Access-Control-Allow-Headers",
-        // "Origin, X-Requested-With, Content-Type, Accept"
-    );
+    // setHeader
+    res.header("Access-Control-Allow-Origin","*")
+    res.header("Origin, X-Requested-With, Content-Type, Accept")
+    res.header("Access-Control-Allow-Methods","GET,PUT,POST,DELETE")
+    res.header("Access-Control-Allow-Headers","Content-Type")
     next();
 })
 app.get('/projectRead', function (req, res) {
@@ -26,10 +26,10 @@ app.get('/tablesRead', (req, res) => {
 })
 //OK
 app.post('/tableReadData',(req,res)=>{
-    const table = {"table":req.body.table};
 
-    // const filter = Data.readData(table)
-    res.send(table);
+    const table = {"table":req.body.table};
+    const filter = Data.readData(table.table)
+    res.send(filter);
 })
 //////////////TEM LAÇO A FUNÇAO 
 app.post('/DataConfig', function (req, res) {
@@ -80,11 +80,13 @@ app.post('/addTableKey', () => {
 //////////////Sprints
 app.post('/filterTable', (req, res) => {
     const filterTable = {
-        filterTable: res.body.filterTable
+        "filterTable": req.body.filterTable
     }
-    const data = new infraestructure(null, filterTable.filterTable);//adicionar nome da tabela dinamico
-    const readData = data.readTable();
-    return res.send(readData);
+    //const filter = Data.readData(filterTable.filterTablec)
+    res.send(filterTable.filterTable);
+    // const data = new infraestructure(null, filterTable.filterTable);//adicionar nome da tabela dinamico
+    // const readData = data.readTable();
+    //res.send(console.lofilterTable.filterTable);
 })
 app.listen(3000, () => {
     console.log('Servidor funcionando');

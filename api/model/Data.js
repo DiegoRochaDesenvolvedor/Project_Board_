@@ -35,7 +35,7 @@ const addData = (data,table)=>{
 }
 const readData = (table)=>{
     ///resources/app
-    const read = fs.readFileSync(`./api/db/${table}.json`,'utf-8');
+    const read = fs.readFileSync(`../../api/db/${table}.json`,'utf-8');
     return JSON.parse(read);
 }
 const reloadWindow = ()=>{
