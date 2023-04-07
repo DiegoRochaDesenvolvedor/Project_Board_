@@ -1,10 +1,10 @@
-const infraestructure = require('../controller/infraestructure.js');
-const DataManipulate = require('../controller/DataManipulate.js');
-const Structure = require('../model/Data.js');
+const infraestructure = require('../../api/controller/infraestructure.js');
+const DataManipulate = require('../../api/controller/DataManipulate.js');
+const Structure = require('../../api/model/Data.js');
 
 const readTable = (tableRead) =>{
-        const data = new infraestructure(null,tableRead);
-        const readData = data.readTable();
+        // const data = new infraestructure(null,tableRead);
+        // const readData = data.readTable();
         const table = document.querySelector('table.todo_table');
         const table_complete = document.querySelector('table.completed_table')
 

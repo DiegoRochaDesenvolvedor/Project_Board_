@@ -3,7 +3,7 @@ const fs = require('fs');
 const writeData = (data,table)=>{
     const dataConverted = JSON.stringify(data,null,'\t');
     ///resources/app/
-    fs.writeFile(`./db/${table}.json`,dataConverted ,(err)=>{
+    fs.writeFile(`./api/db/${table}.json`,dataConverted ,(err)=>{
         if(err){
             console.log(err);
         }else{
@@ -24,7 +24,7 @@ const addData = (data,table)=>{
         dataFilter.id = readTable.length+1
         readTable.push(dataFilter) 
     }///resources/app
-        fs.writeFile(`./db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
+        fs.writeFile(`../db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
             if(err){
                 console.log(err);
             }else{
@@ -35,7 +35,7 @@ const addData = (data,table)=>{
 }
 const readData = (table)=>{
     ///resources/app
-    const read = fs.readFileSync(`./db/${table}.json`,'utf-8');
+    const read = fs.readFileSync(`./api/db/${table}.json`,'utf-8');
     return JSON.parse(read);
 }
 const reloadWindow = ()=>{
@@ -53,7 +53,7 @@ const deleteData = (id,tableName)=>{
 }
 const readTables = ()=>{
     ////resources/app
-   const data = fs.readdirSync('./db',(err,data)=>{
+   const data = fs.readdirSync('./api/db',(err,data)=>{
         if(err){
             return err;
         }

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const functions = require('../controller/Sprints.js')
+const functions = require('../../api/controller/Sprints.js')
 const button_add = document.querySelector('button.add_button');
 const input = document.querySelector('input.text_add');
 const input_date = document.querySelector('.input_date');
@@ -9,13 +9,13 @@ const button_back = document.querySelector('.back');
 
 const title = () =>{
     const title = document.querySelector('.titleTag');
-    title.innerHTML = table()[0].tableRead;
+    title.innerHTML = table()[0].tableRead; requisiçao
 };
-const table = ()=>{
-    ///resources/app
-    const read = fs.readFileSync(`./config/Data_config.json`,'utf-8');
-    return JSON.parse(read);
-}; 
+// const table = ()=>{
+//     ///resources/app
+//     const read = fs.readFileSync(`./config/Data_config.json`,'utf-8');
+//     return JSON.parse(read);
+// }; 
 const inputInsert = ()=>{
     functions.insertInput(input.value,table()[0].tableRead,input_date.value,input_sprint.value,input_color.value);
 };
