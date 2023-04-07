@@ -26,9 +26,10 @@ app.get('/tablesRead', (req, res) => {
 })
 //OK
 app.post('/tableReadData',(req,res)=>{
-    const table = req.body.table;
-    const filter = Data.readData(table)
-    res.send(filter);
+    const table = {"table":req.body.table};
+
+    // const filter = Data.readData(table)
+    res.send(table);
 })
 //////////////TEM LAÇO A FUNÇAO 
 app.post('/DataConfig', function (req, res) {

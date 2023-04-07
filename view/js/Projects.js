@@ -87,10 +87,14 @@ const readMessages = ()=>{
 // };
 // //------- /tablesRead
 const readAllDates = () =>{
-    fetch('http://localhost:3000/tablesRead',{})
+    let data = "asd copy"
+    fetch('http://localhost:3000/tableReadData',{
+        method:"POST",
+        body: JSON.stringify(data)
+    })
     .then(res => res.json())
-    .then((res)=>{
-    console.log(res)})
+    .then((res)=>{console.log(res)})
+    .catch(err=> console.log(err))
 }
 
    //////// const table_titles = Structure.readTables();
