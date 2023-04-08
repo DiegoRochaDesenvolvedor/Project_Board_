@@ -36,8 +36,8 @@ app.post('/DataConfig', function (req, res) {
     const tableRead = {
         'tableRead': req.body.tableRead
     }
-    const read = Data.readTables()
-    const table = read[i].replace('.json', '');
+    // const read = Data.readTables()
+    // const table = read[i].replace('.json', '');
     const tableArray = [];
 
     tableArray.push(tableRead);
@@ -79,14 +79,14 @@ app.post('/addTableKey', () => {
 //-----------POST
 //////////////Sprints
 app.post('/filterTable', (req, res) => {
-    const filterTable = {
-        "filterTable": req.body.filterTable
+    const table = {
+        "table": req.body.table
     }
-    //const filter = Data.readData(filterTable.filterTablec)
-    res.send(filterTable.filterTable);
-    // const data = new infraestructure(null, filterTable.filterTable);//adicionar nome da tabela dinamico
-    // const readData = data.readTable();
-    //res.send(console.lofilterTable.filterTable);
+    const filter = Data.readData(table.table)
+    //res.send(table.table);
+    const data = new infraestructure(null, table.table);//adicionar nome da tabela dinamico
+    const readData = data.readTable();
+    res.send(readData);
 })
 app.listen(3000, () => {
     console.log('Servidor funcionando');

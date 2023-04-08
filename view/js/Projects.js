@@ -75,7 +75,6 @@ const readMessages = ()=>{
             }
             
 }
-
 // const setMessage = (id_message,id,table)=>{
 //         const button_close_message = document.querySelectorAll('.button_close');
 //         button_close_message[id_message].onclick = function (){
@@ -88,12 +87,13 @@ const readMessages = ()=>{
 // };
 // //------- /tablesRead
 const readData = (table)=>{
-    const read = fs.readFileSync(`../../api/db/${table}.json`,'utf-8');
-    return JSON.parse(read);
+    // const read = fs.readFileSync(`../../api/db/${table}.json`,'utf-8');
+    // return JSON.parse(read);
+    
 }
 
 const readAllDates = () =>{
-    let data = { "table" : "asd copy"}
+    //let data = { "table" : "asd copy"}
     //     method:"POST",
     //     body: JSON.stringify(data),
     //     headers:{
@@ -124,7 +124,6 @@ const readAllDates = () =>{
                 }
         };
         return dates
-        console.log(res)
     })
     .catch(err=> console.log(err))
        
@@ -183,39 +182,41 @@ const readAllDates = () =>{
 //         }
 //     };
 // };    
-// const buttonTable = ()=>{
-//     const table_button = document.querySelectorAll('.button_text');
-
-//     for(let i = 0; i<table_button.length;i++){
-//         table_button[i].onclick = function (){
-//             setTable(this.id);
-
-//         }
-//     }
-// };
+const buttonTable = ()=>{
+    const table_button = document.querySelectorAll('.button_text');
+    // console.log('Funciona')
+    for(let i = 0; i<table_button.length;i++){
+        table_button[i].onclick = function (){
+            setTable(this.id);//////////
+            console.log(this.id)
+        }
+    }
+};
 // //ok----- /tablesRead and POST /DataConfig
-// const setTable = (i) =>{
-//     // const read = readTable.readTables(); ADD REQUISITION
-//     const table = read[i].replace('.json','');
+const setTable = (i) =>{
+    fetch('http://localhost:3000/tablesRead')
+    .then(res => res.json())
+    .then((res)=>{
+        console.log(res)
+        const read = res
+        const table = read[i].replace('.json','');
+        console.log(table)
+        let tableRead = { "tableRead" : table}
+        fetch('http://localhost:3000/DataConfig',{
+                method:"POST",
+                body: JSON.stringify(tableRead),
+                headers:{
+                        "Content-type":"application/json; charset=UTF-8"
+                    }
+                })/////////////////////POST
+                .then( response => response.json()
+                )
+                .catch(err=> console.log(err))
+    })
+    window.location.href="view/project.html";
+}
 
-//     const tableRead ={
-//         'tableRead': table
-//     }
 
-//     const tableArray = [];
-//     tableArray.push(tableRead);
-//     ////////////////POST API
-// //resources/app
-//     // fs.writeFile(`./config/Data_config.json`,JSON.stringify(tableArray) ,(err)=>{
-//     //     if(err){
-//     //         console.log(err);
-//     //     }else{
-//     //         console.log('Dados cadastrados')
-//     //     }
-//     // });
-
-//     // window.location.href="project.html";
-// }
 // //./resources/app
 // //Deletetable
 // const delete_table = (tableName) =>{
@@ -240,10 +241,14 @@ const readAllDates = () =>{
 //     }
 // });
 // button_add.onclick =  addTable;
-readAllDates()///////////deletar 
-// readTables(); ----------OK
+//readAllDates()///////////deletar 
+
+document.querySelector('.buttonTable')
+addEventListener("click",buttonTable,false)
+
+readTables();// ----------OK
 // readMessages();
-// buttonTable();
+ ///////buttonTable();
 // delete_button();
 // buttonMessage();
 //DeleteTable
