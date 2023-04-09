@@ -47,8 +47,8 @@ app.post('/DataConfig', function (req, res) {
 })
 app.get('/readDataconfig',(req,res)=>{
     const read = fs.readFileSync(`./api/config/Data_config.json`,'utf-8');
-    res.send(JSON.parse(read));
     res.status(200)
+    res.send(JSON.parse(read));
 })
 app.post('/deleteTable', (req, res) => {
     const deleteTable = {
