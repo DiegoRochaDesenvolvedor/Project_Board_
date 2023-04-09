@@ -1,0 +1,56 @@
+[
+	{
+		"id": 1,
+		"table": "artefatos gerais",
+		"text": "barra de topo ",
+		"completed": 1,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	},
+	{
+		"id": 2,
+		"table": "artefatos gerais",
+		"text": "grau de prioridade",
+		"completed": 0,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	},
+	{
+		"id": 3,
+		"table": "artefatos gerais",
+		"text": "botao de tarefa iniciada",
+		"completed": 0,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	},
+	{
+		"id": 4,
+		"table": "artefatos gerais",
+		"text": "mapeamento de projetos e sprint por entidade",
+		"completed": 0,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	},
+	{
+		"id": 5,
+		"table": "artefatos gerais",
+		"text": "setar sprint por cor",
+		"completed": 1,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	},
+	{
+		"id": 6,
+		"table": "artefatos gerais",
+		"text": "setar sprint por entidade",
+		"completed": 0,
+		"expirationDate": null,
+		"status": "todo",
+		"message": 1
+	}
+]

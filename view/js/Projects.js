@@ -1,15 +1,6 @@
-// const readTable = require('../../model/Data.js');
-// const infraestructure = require('../controller/infraestructure.js')
-// const Structure = require('../../api/model/Data.js');
-// const DataManipulate = require('../controller/DataManipulate.js')
-//const fs = require('fs')
+const button_add = document.querySelector('.button_add');
+const button_delete = document.querySelector('.button_delete')
 
-// const button_add = document.querySelector('.button_add');
-// const input_text = document.querySelector('.input_text');
-
-
-
-//ok ----- /tablesRead
 const readTables = () =>{
     fetch('http://localhost:3000/tablesRead')
         .then(res => res.json())
@@ -25,6 +16,7 @@ const readTables = () =>{
             //add text
            
             button_text.id = i;
+            button.id = i;
             button_text.innerHTML = filter[i];
             button.innerHTML = 'X';
             //add class
@@ -75,113 +67,18 @@ const readMessages = ()=>{
             }
             
 }
-// const setMessage = (id_message,id,table)=>{
-//         const button_close_message = document.querySelectorAll('.button_close');
-//         button_close_message[id_message].onclick = function (){
-//             const message = 0;
-//             const data_id = id-1; 
-//             const data = new DataManipulate(null,null,null,table,null,null);
-//             data.editData(data_id,null,null,null,message);
-//             document.location.reload(true);
-//         }       
-// };
-// //------- /tablesRead
-const readData = (table)=>{
-    // const read = fs.readFileSync(`../../api/db/${table}.json`,'utf-8');
-    // return JSON.parse(read);
-    
+
+const delete_button = ()=>{
+    const table_delete = document.querySelectorAll('.button_delete');
+
+    for(let i = 0; i<table_delete.length;i++){
+        table_delete[i].onclick = function (){
+            delete_table({"id":this.id});
+            //console.log(this.id);
+        }
+    };
 }
 
-const readAllDates = () =>{
-    //let data = { "table" : "asd copy"}
-    //     method:"POST",
-    //     body: JSON.stringify(data),
-    //     headers:{
-    //         "Content-type":"application/json; charset=UTF-8"
-    //     }
-    // })/////////////////////POST
-    fetch('http://localhost:3000/tablesRead')
-    .then(res => res.json())
-    .then((res)=>{
-        const table_titles = res
-        const tables = table_titles.map(data => data.replace('.json',''))
-        const dates = [];
-        const date = new Date();
-        const dayAdjusted = ('0'+ (date.getDate()+4)).slice(-2);
-        const mounth = ('0'+ date.getMonth()+1).slice(-2);
-        const year = date.getFullYear();
-        const dateCorrect = `${year}-${mounth}-${dayAdjusted}`;
-        
-            for(let i = 0; i<tables.length;i++){
-                const data = readData(tables[i]);
-                if(data == 0 || data == null){    
-                }else{
-                   for(let i = 0; i<data.length; i++){
-                        if(data[i].expirationDate == dateCorrect){
-                            dates.push(data[i]);
-                        }
-                    }
-                }
-        };
-        return dates
-    })
-    .catch(err=> console.log(err))
-       
-}
-    //ok------ /tablesRead
-    //////// const table_titles = Structure.readTables();
-    
-//     const delete_button = (table)=>{
-//         //const read = readTable.readTables()
-//         const filter = read.map(item=>item.replace('.json',''));
-    
-//         const table_delete = document.querySelectorAll('.button_delete');
-    
-//         for(let i = 0; i<table_delete.length;i++){
-//             table_delete[i].onclick = function (){
-//                 delete_table(filter[i]);
-//             }
-//         };
-//     }
-
-//     // const table_titles = Structure.readTables();
-//     const tables = table_titles.map(data => data.replace('.json',''))
-//     const dates = [];
-    
-//     const date = new Date();
-//     const dayAdjusted = ('0'+ (date.getDate()+4)).slice(-2);
-//     const mounth = ('0'+ date.getMonth()+1).slice(-2);
-//     const year = date.getFullYear();
-//     const dateCorrect = `${year}-${mounth}-${dayAdjusted}`;
-
-//     console.log(dateCorrect);
-
-//         for(let i = 0; i<tables.length;i++){
-//             const data = Structure.readData(tables[i]);
-//             if(data == 0 || data == null){    
-//             }else{
-//                for(let i = 0; i<data.length; i++){
-//                     if(data[i].expirationDate == dateCorrect){
-//                         dates.push(data[i]);
-//                     }
-//                 }
-//             }
-//     };
-//     return dates
-// }
-// // //ok------ /tablesRead
-// // const delete_button = (table)=>{
-// //     //const read = readTable.readTables()
-// //     const filter = read.map(item=>item.replace('.json',''));
-
-// //     const table_delete = document.querySelectorAll('.button_delete');
-
-//     for(let i = 0; i<table_delete.length;i++){
-//         table_delete[i].onclick = function (){
-//             delete_table(filter[i]);
-//         }
-//     };
-// };    
 const buttonTable = ()=>{
     const table_button = document.querySelectorAll('.button_text');
     // console.log('Funciona')
@@ -192,7 +89,6 @@ const buttonTable = ()=>{
         }
     }
 };
-// //ok----- /tablesRead and POST /DataConfig
 const setTable = (i) =>{
     fetch('http://localhost:3000/tablesRead')
     .then(res => res.json())
@@ -213,42 +109,59 @@ const setTable = (i) =>{
                 )
                 .catch(err=> console.log(err))
     })
+    window.location.reload()
+
     window.location.href="view/project.html";
 }
+const delete_table = (id) =>{
+    fetch('http://localhost:3000/tablesRead')
+        .then(res => res.json())
+        .then((res)=>{
+            const read = res
+            const table = read[0].replace('.json','');
+            let deleteTable = { "deleteTable" : table}
+            fetch('http://localhost:3000/deleteTable',{
+                method:"POST",
+                body: JSON.stringify(deleteTable),
+                headers:{
+                        "Content-type":"application/json; charset=UTF-8"
+                    }
+                })
+                .then( response => response
+                )
+                .catch(err=> console.log(err))
+            })
+    window.location.reload()
+    window.location.href="index.html"
+    }
+const addTable = ()=>{
+    const input_text = document.querySelector('input.input_text').value;
+    let textInput = { "textInput" : input_text}
+    // console.log(input_text)
+    fetch('http://localhost:3000/addTable',{
+            method:"POST",
+            body: JSON.stringify(textInput),
+            headers:{
+                    "Content-type":"application/json; charset=UTF-8"
+                }
+            })/////////////////////POST
+            .then( response => response.json()
+            .then(res => console.log(res))
+            )
+            .catch(err=> console.log(err))
+            window.location.reload()
+            window.location.href="index.html"
+};
 
-
-// //./resources/app
-// //Deletetable
-// const delete_table = (tableName) =>{
-//     const path = `./db/${tableName}.json`;
-//     fs.unlinkSync(path);
-//     document.location.reload(true);
-// };
-// const addTable = ()=>{
-//     const data = new infraestructure(null,input_text.value);
-//     data.createTable();
-//     document.location.reload(true);
-// };
-// const addTableKey = (input_text)=>{
-//     const data = new infraestructure(null,input_text.value);
-//     data.createTable();
-//     document.location.reload(true);
-// };
-// document.addEventListener('keydown',(e)=>{
-//     const key = e.key;  
-//     if(key == 'Enter'){
-//         addTableKey(input_text);
-//     }
-// });
-// button_add.onclick =  addTable;
-//readAllDates()///////////deletar 
-
+document.addEventListener('keydown',(e)=>{
+    const key = e.key;  
+    if(key == 'Enter'){
+        addTable();
+    }
+});
+readTables();
+button_add.onclick =  addTable;
 document.querySelector('.buttonTable')
 addEventListener("click",buttonTable,false)
-
-readTables();// ----------OK
-// readMessages();
- ///////buttonTable();
-// delete_button();
-// buttonMessage();
-//DeleteTable
+document.querySelector('.buttonTable')
+addEventListener("click",delete_button,false)

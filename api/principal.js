@@ -5,8 +5,7 @@ const infraestructure = require('./controller/infraestructure.js');
 const app = express();
 
 app.use(express.json());
-//////////////Projects
-//Ok
+
 app.use((req,res,next)=>{
     // setHeader
     res.header("Access-Control-Allow-Origin","*")
@@ -19,29 +18,23 @@ app.get('/projectRead', function (req, res) {
     const read = fs.readFileSync(`./api/config/Data_config.json`, 'utf-8');
     return res.send(JSON.parse(read));
 })
-//Ok  
 app.get('/tablesRead', (req, res) => {
     const table = Data.readTables();
     res.json(table)
 })
-//OK
 app.post('/tableReadData',(req,res)=>{
-
     const table = {"table":req.body.table};
-    const filter = Data.readData(table.table)
-    res.send(filter);
+    // const filter = Data.readData(table.table)
+    const read = fs.readFileSync(`./api/db/${table.table}.json`,'utf-8');
+    JSON.parse(read);
+    res.send(read);
 })
-//////////////TEM LAÇO A FUNÇAO 
 app.post('/DataConfig', function (req, res) {
     const tableRead = {
         'tableRead': req.body.tableRead
     }
-    // const read = Data.readTables()
-    // const table = read[i].replace('.json', '');
     const tableArray = [];
-
     tableArray.push(tableRead);
-
     fs.writeFile(`./api/config/Data_config.json`, JSON.stringify(tableArray), (err) => {
         if (err) {
             console.log(err);
@@ -49,17 +42,22 @@ app.post('/DataConfig', function (req, res) {
             console.log('Dados cadastrados')
         }
     });
+    //JSON.parse(read);
+    res.send(tableRead);
 })
-//OK
+app.get('/readDataconfig',(req,res)=>{
+    const read = fs.readFileSync(`./api/config/Data_config.json`,'utf-8');
+    res.send(JSON.parse(read));
+    res.status(200)
+})
 app.post('/deleteTable', (req, res) => {
-    const tableDelete = {
-        tableDelete: req.body.tableDelete
+    const deleteTable = {
+        deleteTable: req.body.deleteTable
     }
-    const path = `./api/db/${tableDelete.tableDelete}.json`;
+    const path = `./api/db/${deleteTable.deleteTable}.json`;
     fs.unlinkSync(path);
-    res.end('tabela excluida');
+    res.status(200).send(console.log(deleteTable));
 });
-//OK
 app.post('/addTable', (req, res) => {
     const text = {
         textInput: req.body.textInput
@@ -69,15 +67,11 @@ app.post('/addTable', (req, res) => {
     data.createTable();
     res.status(200).send(text);
 });
-// verificar funçao
 app.post('/addTableKey', () => {
     const data = new infraestructure(null, input_text.value);
     data.createTable();
     document.location.reload(true);
 })
-
-//-----------POST
-//////////////Sprints
 app.post('/filterTable', (req, res) => {
     const table = {
         "table": req.body.table
