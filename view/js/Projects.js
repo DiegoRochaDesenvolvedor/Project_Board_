@@ -32,7 +32,6 @@ const readTables = () =>{
 
 
     })}
-
 const readMessages = ()=>{
     
     const banner = document.querySelector('div.date_message');
@@ -67,7 +66,6 @@ const readMessages = ()=>{
             }
             
 }
-
 const delete_button = ()=>{
     const table_delete = document.querySelectorAll('.button_delete');
 
@@ -78,7 +76,6 @@ const delete_button = ()=>{
         }
     };
 }
-
 const buttonTable = ()=>{
     const table_button = document.querySelectorAll('.button_text');
     // console.log('Funciona')
@@ -89,16 +86,16 @@ const buttonTable = ()=>{
         }
     }
 };
-const setTable = (i) =>{
-    fetch('http://localhost:3000/tablesRead')
+const setTable = async (i) =>{
+    await fetch('http://localhost:3000/tablesRead')
     .then(res => res.json())
-    .then((res)=>{
+    .then(async(res)=>{
         console.log(res)
         const read = res
         const table = read[i].replace('.json','');
         console.log(table)
         let tableRead = { "tableRead" : table}
-        fetch('http://localhost:3000/DataConfig',{
+        await fetch('http://localhost:3000/DataConfig',{
                 method:"POST",
                 body: JSON.stringify(tableRead),
                 headers:{
@@ -110,7 +107,6 @@ const setTable = (i) =>{
                 .catch(err=> console.log(err))
     })
     window.location.reload()
-
     window.location.href="view/project.html";
 }
 const delete_table = (id) =>{
@@ -134,11 +130,11 @@ const delete_table = (id) =>{
     window.location.reload()
     window.location.href="index.html"
     }
-const addTable = ()=>{
+const addTable = async ()=>{
     const input_text = document.querySelector('input.input_text').value;
     let textInput = { "textInput" : input_text}
     // console.log(input_text)
-    fetch('http://localhost:3000/addTable',{
+    await fetch('http://localhost:3000/addTable',{
             method:"POST",
             body: JSON.stringify(textInput),
             headers:{
@@ -152,6 +148,10 @@ const addTable = ()=>{
             window.location.reload()
             window.location.href="index.html"
 };
+const reloadPage = ()=>{
+     window.location.reload()
+    window.location.href="view/project.html";   
+}
 
 document.addEventListener('keydown',(e)=>{
     const key = e.key;  

@@ -1,18 +1,25 @@
 // const infraestructure = require('../../api/controller/infraestructure.js');
 // const DataManipulate = require('../../api/controller/DataManipulate.js');
-// const Structure = require('../../api/model/Data.js');
+//const Structure = require('../../api/model/Data.js');
 
-const readTable = () =>{
+const button_add = document.querySelector('button.add_button');
+const input = document.querySelector('input.text_add');
+const input_date = document.querySelector('.input_date');
+const input_sprint = document.querySelector('input.text_sprint');
+const input_color = document.querySelector('.sprint_menu_color');
+const button_back = document.querySelector('.back');
+
+const readTable = async () =>{
         // const data = new infraestructure(null,tableRead);
         // const readData = data.readTable();
-        fetch('http://localhost:3000/readDataconfig')
+        await fetch('http://localhost:3000/readDataconfig')
         .then(res => res.json())
-        .then((res)=>{
+        .then(async(res)=>{
                 const tableName = res[0].tableRead
 
         let data = { "table" : tableName}
         console.log(data)
-        fetch('http://localhost:3000/tableReadData',{
+        await fetch('http://localhost:3000/tableReadData',{
             method:"POST",
             body: JSON.stringify(data),
             headers:{
@@ -65,10 +72,10 @@ const readTable = () =>{
                         td.appendChild(div_text);
                         td.appendChild(button_ok);
                         td.appendChild(delete_button);       
-                        if(readData[i].expirationDate != null){
-                            div.innerHTML = Structure.filterData(readData[i].expirationDate);
-                            td.appendChild(div);
-                        }
+                        // if(readData[i].expirationDate != null){
+                        //     div.innerHTML = Structure.filterData(readData[i].expirationDate);
+                        //     td.appendChild(div);
+                        // }
                     }else{
                         //create completed list
                         const tr = document.createElement('tr');
@@ -97,6 +104,7 @@ const readTable = () =>{
                  };
             }
         })
+
     })
             //     // .catch(err=> console.log(err))
 }
@@ -104,62 +112,106 @@ const readTable = () =>{
 const insertInput = (data,table,date,sprint,sprint_color) =>{
     const inputData = new DataManipulate(data,0,'todo',table,date,1,sprint,sprint_color);
     inputData.writeData();
-};
-const loopButton = (tableName)=>{
-    const button_ok = document.querySelectorAll('.ok_button');
-    for(let i = 0;i<button_ok.length;i++){
-        button_ok[i].onclick = function(){
-            setCompleted(this.id,tableName);
-        };//taking position butoon in array
-    }
-};
-const loopButtonBack = (tableName)=>{
-    const back_button = document.querySelectorAll('.back_button');
+};////////////---------------
+
+// const loopButton = (tableName)=>{
+//     const button_ok = document.querySelectorAll('.ok_button');
+//     for(let i = 0;i<button_ok.length;i++){
+//         button_ok[i].onclick = function(){
+//             setCompleted(this.id,tableName);
+//         };//taking position butoon in array
+//     }
+// };
+// const loopButtonBack = (tableName)=>{
+//     const back_button = document.querySelectorAll('.back_button');
     
-    for(let i = 0;i<back_button.length;i++){
-        back_button[i].onclick = function(){
-            setBackTodo(this.id,tableName);
-        };//taking position butoon in array
-    }
-};
-const setCompleted = (id,tableName) =>{
-    const completed = 1;
-    const position = id-1;
-    const table = tableName; // alter this data to dinamize the function
-    const data = new infraestructure(table,table);
-    const readData = data.readTable();
+//     for(let i = 0;i<back_button.length;i++){
+//         back_button[i].onclick = function(){
+//             setBackTodo(this.id,tableName);
+//         };//taking position butoon in array
+//     }
+// };
+// const setCompleted = (id,tableName) =>{
+//     const completed = 1;
+//     const position = id-1;
+//     const table = tableName; // alter this data to dinamize the function
+//     const data = new infraestructure(table,table);
+//     const readData = data.readTable();
     
-    readData[position].completed = completed;
-    Structure.writeData(readData,table);
-    document.location.reload(true);
-};
-const setBackTodo = (id,tableName) =>{
-    const completed = 0;
-    const position = id-1;
-    const table = tableName; // alter this data to dinamize the function
-    const data = new infraestructure(tableName,tableName);
-    const readData = data.readTable();
+//     readData[position].completed = completed;
+//     Structure.writeData(readData,table);
+//     document.location.reload(true);
+// };
+// const setBackTodo = (id,tableName) =>{
+//     const completed = 0;
+//     const position = id-1;
+//     const table = tableName; // alter this data to dinamize the function
+//     const data = new infraestructure(tableName,tableName);
+//     const readData = data.readTable();
     
-    readData[position].completed = completed;
-    Structure.writeData(readData,table);
-    document.location.reload(true);
-};
-const loopButtonDelete = (tableName) =>{
-    const button_delete = document.querySelectorAll('.delete_button');
-    const table = tableName;
-    for(let i = 0;i<button_delete.length;i++){
-        button_delete[i].onclick = function(){
-            Structure.deleteData(this.id,table);
-        };//taking position butoon in array
-    }
+//     readData[position].completed = completed;
+//     Structure.writeData(readData,table);
+//     document.location.reload(true);
+// };
+// const loopButtonDelete = (tableName) =>{
+//     const button_delete = document.querySelectorAll('.delete_button');
+//     const table = tableName;
+//     for(let i = 0;i<button_delete.length;i++){
+//         button_delete[i].onclick = function(){
+//             Structure.deleteData(this.id,table);
+//         };//taking position butoon in array
+//     }
+// };
+const inputInsert = async ()=>{
+    const input = document.querySelector('input.text_add');
+    const input_date = document.querySelector('.input_date');
+    const input_sprint = document.querySelector('input.text_sprint');
+    const input_color = document.querySelector('.sprint_menu_color');
+
+    const addInput = {
+        "text" : input.value,
+        "table" : input_date.value,
+        "date" : input_date.value,
+        "input_sprint" : input_sprint.value,
+        "sprint_menu_color" : input_color.value
+    };
+   await fetch('http://localhost:3000/readDataconfig')
+        .then(res => res.json())
+        .then(async (res)=>{
+                const tableName = res[0].tableRead
+
+                const addInput = {
+                    "text" : input.value,
+                    "table" : tableName,
+                    "date" : input_date.value,
+                    "input_sprint" : input_sprint.value,
+                    "sprint_menu_color" : input_color.value
+                }
+        //console.log(data)
+    await  fetch('http://localhost:3000/insertTableInput',{
+            method:"POST",
+            body: JSON.stringify(addInput),
+            headers:{
+                "Content-type":"application/json; charset=UTF-8"
+            }
+        })/////////////////////POST
+        .then( res => res.json()
+        )
+        .then((res)=>{
+            console.log('dados cadastrados !')
+        })
+    })
+    console.log(addInput)
+    window.location.reload()
+
 };
 readTable();
-// module.exports = {
-//     readTable,
-//     insertInput,
-//     loopButton,
-//     setBackTodo,
-//     loopButtonBack,
-//     loopButtonDelete   
-// }
 
+button_add.onclick = inputInsert; //add input data
+//button_back.onclick = botao;
+document.addEventListener('keydown',(e)=>{
+    const key = e.key;  
+    if(key == 'Enter'){
+        inputInsert();
+    }
+});

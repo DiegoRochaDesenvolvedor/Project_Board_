@@ -2,6 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const Data = require('./model/Data.js');
 const infraestructure = require('./controller/infraestructure.js');
+const DataManipulate = require('./controller/DataManipulate.js');
+
 const app = express();
 
 app.use(express.json());
@@ -24,7 +26,6 @@ app.get('/tablesRead', (req, res) => {
 })
 app.post('/tableReadData',(req,res)=>{
     const table = {"table":req.body.table};
-    // const filter = Data.readData(table.table)
     const read = fs.readFileSync(`./api/db/${table.table}.json`,'utf-8');
     JSON.parse(read);
     res.send(read);
@@ -81,6 +82,19 @@ app.post('/filterTable', (req, res) => {
     const data = new infraestructure(null, table.table);//adicionar nome da tabela dinamico
     const readData = data.readTable();
     res.send(readData);
+})
+app.post('/insertTableInput',(req,res)=>{
+    const input = {
+        "text" : req.body.text,
+        "table" : req.body.table,
+        "date" : req.body.date,
+        "input_sprint" : req.body.input_sprint,
+        "sprint_menu_color" : req.body.sprint_menu_color
+    }
+    const inputData = new DataManipulate(input.text,0,'todo',input.table,input.date,1,input.input_sprint,input.sprint_menu_color);
+    inputData.writeData();
+    //res.send(res => res.json());
+    res.send(input)
 })
 app.listen(3000, () => {
     console.log('Servidor funcionando');

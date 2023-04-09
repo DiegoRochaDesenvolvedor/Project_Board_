@@ -14,7 +14,7 @@ const writeData = (data,table)=>{
 const addData = (data,table)=>{
 
     let readTable = readData (table);
-
+        console.log(readTable)
     if(readTable == null){
         readTable = data;
         readTable.id = 1
@@ -24,19 +24,19 @@ const addData = (data,table)=>{
         dataFilter.id = readTable.length+1
         readTable.push(dataFilter) 
     }///resources/app
-        fs.writeFile(`../db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
+        fs.writeFile(`./api/db/${table}.json`,JSON.stringify(readTable,null,'\t'),(err)=>{
             if(err){
                 console.log(err);
             }else{
                 console.log('Dados cadastrados')
             }
         });
-    reloadWindow();
+   
 }
 const readData = (table)=>{
     ///resources/app
     const read = fs.readFileSync(`./api/db/${table}.json`,'utf-8');
-    JSON.parse(read);
+    return JSON.parse(read);
 }
 const reloadWindow = ()=>{
     document.location.reload(true);
