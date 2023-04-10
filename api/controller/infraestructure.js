@@ -3,8 +3,8 @@ const Structure = require('../model/Data.js');
 class infraestructure{
         constructor(data,table,title){
             this.data = data;
-            this.table = table;
-            this.title = title;
+            this.table = table || null;
+            this.title = title || null;
         }
 
         createTable(){

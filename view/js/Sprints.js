@@ -1,5 +1,4 @@
 // const infraestructure = require('../../api/controller/infraestructure.js');
-// const DataManipulate = require('../../api/controller/DataManipulate.js');
 //const Structure = require('../../api/model/Data.js');
 
 const button_add = document.querySelector('button.add_button');
@@ -104,7 +103,7 @@ const readTable = async () =>{
                  };
             }
         })
-
+        loopButton();
     })
             //     // .catch(err=> console.log(err))
 }
@@ -114,14 +113,20 @@ const insertInput = (data,table,date,sprint,sprint_color) =>{
     inputData.writeData();
 };////////////---------------
 
-// const loopButton = (tableName)=>{
-//     const button_ok = document.querySelectorAll('.ok_button');
-//     for(let i = 0;i<button_ok.length;i++){
-//         button_ok[i].onclick = function(){
-//             setCompleted(this.id,tableName);
-//         };//taking position butoon in array
-//     }
-// };
+const loopButton = ()=>{
+     fetch('http://localhost:3000/readDataconfig')
+    .then(res=> res.json())
+    .then((res)=>{
+    const tableName = res        
+        const button_ok = document.querySelectorAll('button.ok_button');
+        for(let i = 0;i<button_ok.length;i++){
+            button_ok[i].onclick = function(){
+                //console.log('funciona!')
+                setCompleted(this.id,tableName[0].tableRead);
+            };//taking position butoon in array
+        }
+    })
+};
 // const loopButtonBack = (tableName)=>{
 //     const back_button = document.querySelectorAll('.back_button');
     
@@ -131,17 +136,25 @@ const insertInput = (data,table,date,sprint,sprint_color) =>{
 //         };//taking position butoon in array
 //     }
 // };
-// const setCompleted = (id,tableName) =>{
-//     const completed = 1;
-//     const position = id-1;
-//     const table = tableName; // alter this data to dinamize the function
-//     const data = new infraestructure(table,table);
-//     const readData = data.readTable();
-    
-//     readData[position].completed = completed;
-//     Structure.writeData(readData,table);
-//     document.location.reload(true);
-// };
+const setCompleted = (id,tableName) =>{
+let data = {
+    "table": tableName,
+    "id": id
+}
+console.log(data)
+    fetch('http://localhost:3000/setCompleted',{
+    method:"POST",
+    body: JSON.stringify(data),
+    headers:{
+        "Content-type":"application/json; charset=UTF-8"
+    }
+})/////////////////////POST
+.then( res => res.json()
+)
+.then((res)=>{ 
+    res.send(console.log('dados editados'))   
+})
+};
 // const setBackTodo = (id,tableName) =>{
 //     const completed = 0;
 //     const position = id-1;
@@ -205,13 +218,16 @@ const inputInsert = async ()=>{
     window.location.reload()
 
 };
+const back_button = ()=>{
+    window.location.href="../index.html"
+}
 readTable();
-
 button_add.onclick = inputInsert; //add input data
-//button_back.onclick = botao;
+button_back.onclick = back_button;
 document.addEventListener('keydown',(e)=>{
     const key = e.key;  
     if(key == 'Enter'){
         inputInsert();
     }
 });
+

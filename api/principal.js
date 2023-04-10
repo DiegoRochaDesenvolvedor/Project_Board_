@@ -96,6 +96,27 @@ app.post('/insertTableInput',(req,res)=>{
     //res.send(res => res.json());
     res.send(input)
 })
+app.post('/setCompleted',(req,res)=>{
+    const tableData = {
+        "table": req.body.table,
+        "id": req.body.id
+    }
+    console.log(tableData)
+    const completed = 1;
+    const position = tableData.id;
+    const table = tableData.table; // alter this data to dinamize the function
+    console.log(table)
+    const data = new infraestructure(table,table);
+    const readData = data.readTable();
+    
+    console.log(readData[position-1])
+    readData[position-1].completed = completed;
+    
+    Data.addData(readData,table)
+    //DataManipulate.writeData(readData,table);
+    res.status(200)
+    res.send(res.json())
+})
 app.listen(3000, () => {
     console.log('Servidor funcionando');
 })
