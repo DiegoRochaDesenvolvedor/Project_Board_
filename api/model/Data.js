@@ -14,13 +14,11 @@ const writeData = (data,table)=>{
 const addData = (data,table)=>{
 
     let readTable = readData (table);
-        console.log(readTable)
     if(readTable == null){
         readTable = data;
         readTable.id = 1
     }else{
         const dataFilter = data.shift();
-        console.log(dataFilter)
         dataFilter.id = readTable.length+1
         readTable.push(dataFilter) 
     }///resources/app

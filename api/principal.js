@@ -101,22 +101,49 @@ app.post('/setCompleted',(req,res)=>{
         "table": req.body.table,
         "id": req.body.id
     }
-    console.log(tableData)
-    const completed = 1;
+
     const position = tableData.id;
     const table = tableData.table; // alter this data to dinamize the function
-    console.log(table)
     const data = new infraestructure(table,table);
     const readData = data.readTable();
+    const toEdit = readData[position-1];
+    toEdit.completed = 1; 
+    Data.writeData(readData,table)
     
-    console.log(readData[position-1])
-    readData[position-1].completed = completed;
-    
-    Data.addData(readData,table)
-    //DataManipulate.writeData(readData,table);
-    res.status(200)
-    res.send(res.json())
+res.end()
 })
+app.post('/setBackToDo',(req,res)=>{
+    const tableData = {
+        "table": req.body.table,
+        "id": req.body.id
+    }
+
+    const position = tableData.id;
+    const table = tableData.table; // alter this data to dinamize the function
+    const data = new infraestructure(table,table);
+    const readData = data.readTable();
+    const toEdit = readData[position-1];
+    toEdit.completed = 0; 
+    Data.writeData(readData,table)
+    res.end()
+})
+app.post('/sprintDelete',(req,res)=>{
+    const tableData = {
+        "table": req.body.table,
+        "id": req.body.id
+    }
+    const tableName = tableData.table
+    const id = tableData.id
+    const table = Data.readData (tableName);
+    const idTable = id;
+    const tabela = table.filter(item => item.id != idTable);
+    for(let i = 0; i<tabela.length; i++){
+        tabela[i].id = i+1;
+    };
+    Data.writeData(tabela,tableName);
+    res.end();
+})
+
 app.listen(3000, () => {
     console.log('Servidor funcionando');
 })

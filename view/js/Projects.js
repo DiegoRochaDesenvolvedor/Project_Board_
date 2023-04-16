@@ -129,7 +129,7 @@ const delete_table = (id) =>{
             })
     window.location.reload()
     window.location.href="index.html"
-    }
+}
 const addTable = async ()=>{
     const input_text = document.querySelector('input.input_text').value;
     let textInput = { "textInput" : input_text}

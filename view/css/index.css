@@ -82,6 +82,11 @@ body{
     font-size: 11px;
     
 }
+.expirationDate{
+    color: rgb(0, 255, 34);
+    font-size: 11px;
+    
+}
 
 .list{
     width: auto;
