@@ -56,7 +56,18 @@ const readDashboard = async ()=>{
             table.classList = 'projects_table';
 
             projects_table.appendChild(tr_sprint);
-            projects_table.appendChild(tr_sprint);
+            tr_sprint.appendChild(td_sprint);
+            tr_sprint.appendChild(table);
+
+            tr_sprint.appendChild(div_numbers);
+
+            div_numbers.appendChild(div_title);
+            span_text.appendChild()
+
+            div_numbers.appendChild(div_title);
+            div_numbers.appendChild(div_title);
+
+
 
         }
      })
