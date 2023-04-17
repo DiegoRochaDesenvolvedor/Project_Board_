@@ -1,5 +1,6 @@
 const button_add = document.querySelector('.button_add');
 const button_delete = document.querySelector('.button_delete')
+const button_dashboard = document.querySelector('.dashboard_button')
 
 const readTables = () =>{
     fetch('http://localhost:3000/tablesRead')
@@ -152,6 +153,9 @@ const reloadPage = ()=>{
      window.location.reload()
     window.location.href="view/project.html";   
 }
+const dashboard = () =>{
+    window.location.href="view/dashboard.html"
+}
 
 document.addEventListener('keydown',(e)=>{
     const key = e.key;  
@@ -161,6 +165,7 @@ document.addEventListener('keydown',(e)=>{
 });
 readTables();
 button_add.onclick =  addTable;
+button_dashboard.onclick = dashboard;
 document.querySelector('.buttonTable')
 addEventListener("click",buttonTable,false)
 document.querySelector('.buttonTable')
