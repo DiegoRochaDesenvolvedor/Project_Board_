@@ -4,9 +4,7 @@ const readDashboard = async ()=>{
     .then(res => res.json())
     .then(async(res)=>{
         //const titles = res;
-    //console.log(res)
     const titlesFilter = res.map(obj => obj.replace('.json',''))
-    console.log(titlesFilter)
     for(let i = 0; i<titlesFilter.length; i++){
         const table = titlesFilter[i]
         let data = { "table" : table}
@@ -22,53 +20,92 @@ const readDashboard = async ()=>{
     .then((res)=>{
         const tableData = res
         const projects_table = document.querySelector('table.projects_table')
-        for(let i = 0; i<tableData.length; i++){
-            console.log(tableData[i])
+  
+        const complete = res.filter(obj => obj.completed == 0)
+        const toDo = res.filter(obj => obj.completed == 1)
 
-            //const tr = document.createElement('tr')
-            const tr = document.createElement('tr');
+        const completeCount =  complete.length
+        const toDoCount = toDo.length
+        console.log(toDoCount)
+        //////////////
             const tr_sprint = document.createElement('tr')
-            const td = document.createElement('td');
-            const td_sprint = document.createElement('td');
             const div_numbers = document.createElement('div');
             const div_title = document.createElement('div');
             const div_todo = document.createElement('div');
             const div_complete = document.createElement('div')
             const br = document.createElement('br');
             const h1 = document.createElement('h1');
-            const table = document.createElement('table');
+            const hh1 = document.createElement('h1');
             const span_text = document.createElement('span')
             const span = document.createElement('span')
-            const sprint_due = document.createElement('span')
-            const text_sprint = document.createElement('span')
             const span_todo_number = document.createElement('span')
+            const span_complete = document.createElement('span')
+            const td_sprint = document.createElement('td');
+            const tableSprint = document.createElement('table')
 
-            sprint_due.classList = 'sprint_due';
-            text_sprint.classList = 'text_sprint';
-            span_todo_number.classList = 'todo_number';
             tr_sprint.classList = 'sprint_line_background';
-            td_sprint.classList = 'sprint-lines';
+            td_sprint.classList = 'sprint_lines';
+            span_todo_number.classList = 'todo_number';
+            span_complete.classList = 'todo_number';
             div_numbers.classList = 'numbers_project';
             span_text.classList = 'sprint_text_line';
             div_title.classList = 'titleProject_dashboard'; 
             div_todo.classList = 'toDo_dashboard';
             div_complete.classList = 'toDo_dashboard';
-            table.classList = 'projects_table';
+            tableSprint.classList = 'projects_table';
+
+            span_text.innerHTML = tableData[i].table;
+            div_todo.innerHTML = 'To do';
+            div_complete.innerHTML = 'Complete';
+            span_todo_number.innerHTML = completeCount;
+            span_complete.innerHTMl = 1;
+            span.innerHTML = tableData[i].expirationDate;
 
             projects_table.appendChild(tr_sprint);
             tr_sprint.appendChild(td_sprint);
-            tr_sprint.appendChild(table);
-
-            tr_sprint.appendChild(div_numbers);
-
+            td_sprint.appendChild(div_numbers);
+            
             div_numbers.appendChild(div_title);
-            span_text.appendChild()
+            div_title.appendChild(span_text)
+            div_title.appendChild(span)
+            
+            div_numbers.appendChild(div_todo);
+            div_todo.appendChild(h1);
+            div_todo.appendChild(span_todo_number);
+            
+            div_numbers.appendChild(div_complete);
+            div_complete.appendChild(hh1);
+            div_complete.appendChild(span_complete);
+            
+            td_sprint.appendChild(tableSprint)
 
-            div_numbers.appendChild(div_title);
-            div_numbers.appendChild(div_title);
+            
+        //     /////////////// loop
+        for(let i = 0; i<complete.length; i++){
 
+            const table = document.createElement('table');
+            const tr = document.createElement('tr');
+            const tr_sprint = document.createElement('tr')
+            const td = document.createElement('td');
+            const td_sprint = document.createElement('td');
+            const sprint_due = document.createElement('span')
+            const text_sprint = document.createElement('span')
+            
+            table.classList = 'projects_table';
+            tr_sprint.classList = 'sprint_line_background';
+            td_sprint.classList = 'sprint-lines';
+            sprint_due.classList = 'sprint_due';
+            text_sprint.classList = 'text_sprint';
 
+            if(tableData[i].expirationDate != null){
+                sprint_due.innerHTML = ` Due in: ${complete[i].expirationDate}`;
+            }
+            text_sprint.innerHTML = complete[i].text;
 
+            tableSprint.appendChild(tr);
+            tr.appendChild(td);
+            td.appendChild(text_sprint)
+            td.appendChild(sprint_due)
         }
      })
     // } 
