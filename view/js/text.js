@@ -1,9 +1,9 @@
-//const Data = require('../../api/model/Data.js')
+const buttonReport = document.querySelector('button.report')
+const buttonBack = document.querySelector('div.back')
 const readDashboard = async ()=>{
     await fetch('http://localhost:3000/tablesRead')
     .then(res => res.json())
     .then(async(res)=>{
-        //const titles = res;
     const titlesFilter = res.map(obj => obj.replace('.json',''))
     for(let i = 0; i<titlesFilter.length; i++){
         const table = titlesFilter[i]
@@ -20,13 +20,13 @@ const readDashboard = async ()=>{
     .then((res)=>{
         const tableData = res
         const projects_table = document.querySelector('table.projects_table')
-  
+        console.log(tableData[0].table)
         const complete = res.filter(obj => obj.completed == 0)
         const toDo = res.filter(obj => obj.completed == 1)
 
         const completeCount =  complete.length
         const toDoCount = toDo.length
-        console.log(toDoCount)
+      
         //////////////
             const tr_sprint = document.createElement('tr')
             const div_numbers = document.createElement('div');
@@ -54,12 +54,13 @@ const readDashboard = async ()=>{
             div_complete.classList = 'toDo_dashboard';
             tableSprint.classList = 'projects_table';
 
-            span_text.innerHTML = tableData[i].table;
+            span_text.innerHTML = tableData[0].table;
             div_todo.innerHTML = 'To do';
             div_complete.innerHTML = 'Complete';
-            span_todo_number.innerHTML = completeCount;
-            span_complete.innerHTMl = 1;
-            span.innerHTML = tableData[i].expirationDate;
+            h1.innerHTML = completeCount;
+            span_complete.innerHTMl = toDoCount;
+            span.innerHTML = tableData[0].expirationDate;
+            hh1.innerHTML = toDoCount;
 
             projects_table.appendChild(tr_sprint);
             tr_sprint.appendChild(td_sprint);
@@ -112,4 +113,15 @@ const readDashboard = async ()=>{
 }})
     
 }
+const report = () =>{
+    console.log('funciona')
+    window.print();
+}
+const backButton =()=>{
+    ///console.log();
+    window.location.href="../index.html"
+}
 readDashboard()
+
+buttonReport.onclick = report
+buttonBack.onclick = backButton

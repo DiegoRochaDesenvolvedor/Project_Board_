@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/cypress open",
     "start": "electron .",
     "api": "node api/principal.js"
   },
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^12.10.0",
     "electron": "^1.6.1"
   },
   "dependencies": {
